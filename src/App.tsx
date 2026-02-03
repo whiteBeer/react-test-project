@@ -1,3 +1,4 @@
+import { createPortal } from 'react-dom';
 import './App.css';
 
 function App() {
@@ -9,6 +10,10 @@ function App() {
       <h1>
         Test react app {a}
       </h1>
+      {createPortal(
+        <div id="modal-content"></div>,
+        document.body
+      )}
     </>
   );
 }
