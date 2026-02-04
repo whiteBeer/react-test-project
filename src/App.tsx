@@ -1,19 +1,42 @@
-import { createPortal } from 'react-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 import './App.css';
+
+import HugePage from './pages/HugePage';
+import MemoPage from './pages/MemoPage';
+import AbortControllerPage from './pages/AbortControllerPage';
 
 function App() {
 
-  const a = 124;
-
   return (
     <>
-      <h1>
-        Test react app {a}
-      </h1>
-      {createPortal(
-        <div id="modal-content"></div>,
-        document.body
-      )}
+      <div>
+        <Link to={'/'}>Home</Link>
+        <hr/>
+      </div>
+      <Routes>
+        <Route
+          path="/"
+          element={<div>
+            <div className="pages">
+              <Link  to={'/huge-page'}>Huge Page</Link >
+              <Link  to={'/memo-page?input=aaa&page=2'}>Memo Page</Link >
+              <Link  to={'/abort-controller'}>Abort Controller</Link >
+            </div>
+          </div>}
+        />
+        <Route
+          path="/huge-page"
+          element={<HugePage />}
+        />
+        <Route
+          path="/memo-page"
+          element={<MemoPage/>}
+        />
+        <Route
+          path="/abort-controller"
+          element={<AbortControllerPage/>}
+        />
+      </Routes>
     </>
   );
 }
