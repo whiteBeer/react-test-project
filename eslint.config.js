@@ -23,7 +23,7 @@ export default defineConfig([
       "quotes": ["error", "single"],
       "indent": ["error", 2, { SwitchCase: 1 }],
       "semi": ["error", "always"],
-      "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+      "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
     }
   },
 ])

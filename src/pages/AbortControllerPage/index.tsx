@@ -17,7 +17,7 @@ function AbortControllerPage() {
       );
       const data = await res.json();
       console.log(data);
-    } catch (err:any) {
+    } catch (err:string|unknown) {
       console.log(err);
     }
     setIsLoading(false);

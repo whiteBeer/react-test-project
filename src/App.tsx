@@ -5,6 +5,7 @@ import './App.css';
 const HugePage = lazy(() => import('./pages/HugePage'));
 const MemoPage = lazy(() => import('./pages/MemoPage'));
 const AbortControllerPage = lazy(() => import('./pages/AbortControllerPage'));
+const TypescriptPage = lazy(() => import('./pages/TypescriptPage'));
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
                 <Link  to={'/huge-page'}>Huge Page</Link >
                 <Link  to={'/memo-page?input=aaa&page=2'}>Memo Page</Link >
                 <Link  to={'/abort-controller'}>Abort Controller</Link >
+                <Link  to={'/typescript-page'}>Typescript Page</Link >
               </div>
             </div>}
           />
@@ -37,6 +39,10 @@ function App() {
           <Route
             path="/abort-controller"
             element={<AbortControllerPage/>}
+          />
+          <Route
+            path="/typescript-page"
+            element={<TypescriptPage name={'Vasilii'} age={54} onClick={(arg)=> alert(arg)}/>}
           />
         </Routes>
       </Suspense>
