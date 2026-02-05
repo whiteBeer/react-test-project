@@ -6,6 +6,7 @@ const HugePage = lazy(() => import('./pages/HugePage'));
 const MemoPage = lazy(() => import('./pages/MemoPage'));
 const AbortControllerPage = lazy(() => import('./pages/AbortControllerPage'));
 const TypescriptPage = lazy(() => import('./pages/TypescriptPage'));
+const ImageCropPage = lazy(() => import('./pages/ImageCropPage'));
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
                 <Link  to={'/memo-page?input=aaa&page=2'}>Memo Page</Link >
                 <Link  to={'/abort-controller'}>Abort Controller</Link >
                 <Link  to={'/typescript-page'}>Typescript Page</Link >
+                <Link  to={'/image-crop'}>ImageCrop Page</Link >
               </div>
             </div>}
           />
@@ -43,6 +45,10 @@ function App() {
           <Route
             path="/typescript-page"
             element={<TypescriptPage name={'Vasilii'} age={54} onClick={(arg)=> alert(arg)}/>}
+          />
+          <Route
+            path="/image-crop"
+            element={<ImageCropPage />}
           />
         </Routes>
       </Suspense>
