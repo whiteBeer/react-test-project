@@ -1,9 +1,10 @@
+import { lazy, Suspense } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 
-import HugePage from './pages/HugePage';
-import MemoPage from './pages/MemoPage';
-import AbortControllerPage from './pages/AbortControllerPage';
+const HugePage = lazy(() => import('./pages/HugePage'));
+const MemoPage = lazy(() => import('./pages/MemoPage'));
+const AbortControllerPage = lazy(() => import('./pages/AbortControllerPage'));
 
 function App() {
 
@@ -13,30 +14,32 @@ function App() {
         <Link to={'/'}>Home</Link>
         <hr/>
       </div>
-      <Routes>
-        <Route
-          path="/"
-          element={<div>
-            <div className="pages">
-              <Link  to={'/huge-page'}>Huge Page</Link >
-              <Link  to={'/memo-page?input=aaa&page=2'}>Memo Page</Link >
-              <Link  to={'/abort-controller'}>Abort Controller</Link >
-            </div>
-          </div>}
-        />
-        <Route
-          path="/huge-page"
-          element={<HugePage />}
-        />
-        <Route
-          path="/memo-page"
-          element={<MemoPage/>}
-        />
-        <Route
-          path="/abort-controller"
-          element={<AbortControllerPage/>}
-        />
-      </Routes>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route
+            path="/"
+            element={<div>
+              <div className="pages">
+                <Link  to={'/huge-page'}>Huge Page</Link >
+                <Link  to={'/memo-page?input=aaa&page=2'}>Memo Page</Link >
+                <Link  to={'/abort-controller'}>Abort Controller</Link >
+              </div>
+            </div>}
+          />
+          <Route
+            path="/huge-page"
+            element={<HugePage />}
+          />
+          <Route
+            path="/memo-page"
+            element={<MemoPage/>}
+          />
+          <Route
+            path="/abort-controller"
+            element={<AbortControllerPage/>}
+          />
+        </Routes>
+      </Suspense>
     </>
   );
 }
