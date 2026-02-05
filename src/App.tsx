@@ -2,7 +2,7 @@ import { lazy, Suspense } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 
-const HugePage = lazy(() => import('./pages/HugePage'));
+const HugePage = lazy(() => import('./pages/HugePageWithPortal'));
 const MemoPage = lazy(() => import('./pages/MemoPage'));
 const AbortControllerPage = lazy(() => import('./pages/AbortControllerPage'));
 const TypescriptPage = lazy(() => import('./pages/TypescriptPage'));
