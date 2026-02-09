@@ -7,6 +7,7 @@ const MemoPage = lazy(() => import('./pages/MemoPage'));
 const AbortControllerPage = lazy(() => import('./pages/AbortControllerPage'));
 const TypescriptPage = lazy(() => import('./pages/TypescriptPage'));
 const ImageCropPage = lazy(() => import('./pages/ImageCropPage'));
+const ReduxPage = lazy(() => import('./pages/ReduxPage'));
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
                 <Link  to={'/abort-controller'}>Abort Controller</Link >
                 <Link  to={'/typescript-page'}>Typescript Page</Link >
                 <Link  to={'/image-crop'}>ImageCrop Page</Link >
+                <Link  to={'/redux'}>Redux Page</Link >
               </div>
             </div>}
           />
@@ -49,6 +51,10 @@ function App() {
           <Route
             path="/image-crop"
             element={<ImageCropPage />}
+          />
+          <Route
+            path="/redux"
+            element={<ReduxPage />}
           />
         </Routes>
       </Suspense>
