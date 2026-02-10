@@ -1,5 +1,5 @@
-import type { AppDispatch } from '../reducers';
-import { postsFetching, postsFetched, postsFetchingError } from '../reducers/postsSlice';
+import type { AppDispatch } from '../store';
+import { postsFetching, postsFetched, postsFetchingError } from './postsSlice';
 
 export const fetchPosts = () => async (dispatch: AppDispatch) => {
   try {
@@ -12,11 +12,13 @@ export const fetchPosts = () => async (dispatch: AppDispatch) => {
     
     const data = await response.json();
     dispatch(postsFetched(data));
-  } catch (e:unknown) {
+    return data;
+  } catch (e: unknown) {
     if (e instanceof Error) {
       dispatch(postsFetchingError(e.message));
     } else {
       dispatch(postsFetchingError('An unknown error occurred'));
     }
+    throw e;
   }
 };
